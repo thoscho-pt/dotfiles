@@ -143,6 +143,7 @@ window_rules:
         window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
       - window_process: { equals: 'PowerToys' }
         window_title: { regex: '.*? - Peek' }
+        A
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper' }
       - window_process: { equals: 'EXCEL' }
@@ -151,6 +152,8 @@ window_rules:
         window_class: { not_regex: 'OpusApp' }
       - window_process: { equals: 'POWERPNT' }
         window_class: { not_regex: 'PPTFrameClass' }
+
+      - window_process: { equals: 'msrdc' }  # wslg
 
   - commands: ["move --workspace 1"]
     match:
@@ -162,7 +165,7 @@ window_rules:
 
   - commands: ["move --workspace 3"]
     match:
-      - window_process: { regex: "Chrome_WidgetWin_1" }
+      - window_process: { equals: "Google Chrome" }
 
   - commands: ["move --workspace 4"]
     match:
@@ -170,20 +173,20 @@ window_rules:
 
   - commands: ["move --workspace 5"]
     match:
-      - window_process: { regex: "rctrl_rewnd32" } # Outlook
+      - window_class: { equals: "Outlook Host" }
 
   - commands: ["move --workspace 6"]
     match:
-      - window_process: { regex: "TaskManagerWindow" }
+      - window_class: { equals: "TaskManagerWindow" }
 
   - commands: ["move --workspace 7"]
     match:
-      - window_title: { regex: "Notes:.*" } # Zim
-      - window_title: { regex: ".*KeePass" }
+      - window_title: { regex: ".*ProdriveNotes" }
+      #- window_title: { regex: ".*KeePass" }
 
   - commands: ["move --workspace 9"]
     match:
-      - window_process: { regex: "TeamsWebView" }
+      - window_class: { equals: "TeamsWebView" }
 
 
 
@@ -207,33 +210,33 @@ binding_modes:
 keybindings:
   # Shift focus in a given direction.
   - commands: ['focus --direction left']
-    bindings: ['alt+h', 'alt+left']
+    bindings: ['ctrl+left']
   - commands: ['focus --direction right']
-    bindings: ['alt+l', 'alt+right']
+    bindings: ['ctrl+right']
   - commands: ['focus --direction up']
-    bindings: ['alt+k', 'alt+up']
+    bindings: ['ctrl+up']
   - commands: ['focus --direction down']
-    bindings: ['alt+j', 'alt+down']
+    bindings: ['ctrl+down']
 
   # Move focused window in a given direction.
   - commands: ['move --direction left']
-    bindings: ['alt+shift+h', 'alt+shift+left']
+    bindings: ['ctrl+shift+left']
   - commands: ['move --direction right']
-    bindings: ['alt+shift+l', 'alt+shift+right']
+    bindings: ['ctrl+shift+right']
   - commands: ['move --direction up']
-    bindings: ['alt+shift+k', 'alt+shift+up']
+    bindings: ['ctrl+shift+up']
   - commands: ['move --direction down']
-    bindings: ['alt+shift+j', 'alt+shift+down']
+    bindings: ['ctrl+shift+down']
 
   # Resize focused window by a percentage or pixel amount.
-  - commands: ['resize --width -2%']
-    bindings: ['alt+u']
-  - commands: ['resize --width +2%']
-    bindings: ['alt+p']
-  - commands: ['resize --height +2%']
-    bindings: ['alt+o']
-  - commands: ['resize --height -2%']
-    bindings: ['alt+i']
+  #- commands: ['resize --width -2%']
+  #  bindings: ['alt+u']
+  #- commands: ['resize --width +2%']
+  #  bindings: ['alt+p']
+  #- commands: ['resize --height +2%']
+  #  bindings: ['alt+o']
+  #- commands: ['resize --height -2%']
+  #  bindings: ['alt+i']
 
   # As an alternative to the resize keybindings above, resize mode enables
   # resizing via arrow keys or HJKL. The binding mode is defined above with
@@ -261,7 +264,7 @@ keybindings:
 
   # Change the focused window to be tiling.
   - commands: ['toggle-tiling']
-    bindings: ['alt+t']
+    bindings: ['alt+shift+space']
 
   # Change the focused window to be fullscreen.
   - commands: ['toggle-fullscreen']

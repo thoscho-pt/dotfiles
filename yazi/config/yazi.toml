@@ -10,4 +10,8 @@ open = [
   { run = "vim %s", desc = "Open" },
 ]
 
-
+[[mgr.prepend_keymap]]
+on   = "!"
+for  = "windows"
+run  = 'shell "bash" --block'
+desc = "Open Git Bash here"
