@@ -1,7 +1,16 @@
 general:
   # Commands to run when the WM has started. This is useful for running a
   # script or launching another application.
-  startup_commands: ['shell-exec yasb']
+  startup_commands: [
+    'shell-exec yasb',
+    'shell-exec Flow.Launcher.exe',
+    'shell-exec ms-teams',
+    'shell-exec cmd /c start chrome',
+    'shell-exec pycharm',
+    'shell-exec zim',
+    'shell-exec olk.exe',
+    'shell-exec taskmgr.exe /7'
+  ]
 
   # Commands to run just before the WM is shutdown.
   shutdown_commands: ['shell-exec taskkill /IM yasb.exe /F']
@@ -143,7 +152,7 @@ window_rules:
         window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
       - window_process: { equals: 'PowerToys' }
         window_title: { regex: '.*? - Peek' }
-        A
+        
       - window_process: { equals: 'Lively' }
         window_class: { regex: 'HwndWrapper' }
       - window_process: { equals: 'EXCEL' }
@@ -163,11 +172,11 @@ window_rules:
     match:
       - window_process: { regex: "intellij|vscode" }
 
-  - commands: ["move --workspace 3"]
+  - commands: ["move --workspace 4"]
     match:
       - window_process: { equals: "Google Chrome" }
 
-  - commands: ["move --workspace 4"]
+  - commands: ["move --workspace 3"]
     match:
       - window_process: { regex: "MozillaWindowClass" }
 
