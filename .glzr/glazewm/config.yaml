@@ -137,6 +137,7 @@ workspaces:
   - name: '8'
   - name: '9'
 
+# Use winlister to find names, or properties of a process via task manager
 window_rules:
   - commands: ['ignore']
     match:
@@ -170,7 +171,7 @@ window_rules:
 
   - commands: ["move --workspace 2"]
     match:
-      - window_process: { regex: "intellij|vscode|idea" }
+      - window_process: { regex: "intellij|Code|idea|devenv" }
 
   - commands: ["move --workspace 4"]
     match:
@@ -196,8 +197,14 @@ window_rules:
   - commands: ["move --workspace 9"]
     match:
       - window_class: { equals: "TeamsWebView" }
-
-
+  # Visual Studio
+  - commands: ['toggle-floating --centered', 'move --workspace 2']
+    match:
+      - window_process: { equals: 'devenv' }
+  # VS Code
+  - commands: ["move --workspace 2"]
+    match:
+      - window_process: { equals: 'Code' }
 
 
 binding_modes:
