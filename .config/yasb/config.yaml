@@ -51,7 +51,6 @@ bars:
       - "brightness"
       - "wifi"
       - "systray"
-      - "media"
       - "microphone"
       - "volume"
       - "notifications"
